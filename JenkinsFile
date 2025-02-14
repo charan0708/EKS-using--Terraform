@@ -8,9 +8,7 @@ pipeline{
            }
            steps {
                withCredentials([string(credentialsId: 'github-token', variable: 'github-token')])
-                   sh '''  
-                       echo setup
-                    '''  
+                   sh 'echo setup' 
             }
         }    
         stage('Deploy to AWS') {
