@@ -1,11 +1,6 @@
 pipeline{
     agent any
     stages{
-        stage('checkoutcode'){
-            steps{
-                    git branch: 'main', url: 'https://github.com/charan0708/EKS-using--Terraform.git'
-           }
-        }
         stage('Deploy to AWS') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')])
