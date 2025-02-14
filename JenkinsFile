@@ -1,6 +1,11 @@
 pipeline{
     agent any
     stages{
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/charan0708/EKS-using--Terraform.git'
+            }
+        }
         stage('Deploy to AWS') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')])
